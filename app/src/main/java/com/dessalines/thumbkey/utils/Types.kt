@@ -156,6 +156,28 @@ data class KeyC(
         color,
     )
 
+    constructor(
+        chordKey: Int,
+        displayText: String = "",
+        displayFont: FontFamily? = null,
+        swipeReturnAction: KeyAction? = null,
+        display: KeyDisplay = KeyDisplay.TextDisplay(displayText, fontFamily = displayFont),
+        capsModeDisplay: KeyDisplay? = null,
+        size: FontSizeVariant = FontSizeVariant.SMALL,
+        color: ColorVariant =
+            when (size) {
+                FontSizeVariant.LARGE -> ColorVariant.PRIMARY
+                else -> ColorVariant.SECONDARY
+            },
+    ) : this(
+        KeyAction.ChordDown(chordKey),
+        swipeReturnAction,
+        display,
+        capsModeDisplay,
+        size,
+        color,
+    )
+
     companion object
 }
 
@@ -171,6 +193,14 @@ sealed class KeyDisplay {
 }
 
 sealed class KeyAction {
+    class ChordDown(
+        val key: Int
+    ) : KeyAction()
+
+    class ChordUp(
+        val key: Int
+    ) : KeyAction()
+
     class CommitText(
         val text: String,
     ) : KeyAction()

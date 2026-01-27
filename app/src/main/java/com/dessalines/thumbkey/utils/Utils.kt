@@ -348,6 +348,34 @@ fun performKeyAction(
     onKeyEvent: () -> Unit,
 ) {
     when (action) {
+        is KeyAction.ChordDown -> {
+            ime.chordManager.keyDown(action.key)
+        }
+
+        is KeyAction.ChordUp -> {
+            val txt = ime.chordManager.keyUp(action.key)
+            if (txt != null) {
+                performKeyAction(
+                    KeyAction.CommitText(txt),
+                    ime,
+                    autoCapitalize,
+                    keyboardSettings,
+                    onToggleShiftMode,
+                    onToggleCtrlMode,
+                    onToggleAltMode,
+                    onToggleNumericMode,
+                    onToggleEmojiMode,
+                    onToggleClipboardMode,
+                    onToggleCapsLock,
+                    onToggleHideLetters,
+                    onAutoCapitalize,
+                    onSwitchLanguage,
+                    onChangePosition,
+                    onKeyEvent
+                )
+            }
+        }
+
         is KeyAction.CommitText -> {
             val text = action.text
             Log.d(TAG, "committing key text: $text")

@@ -1,9 +1,11 @@
 package com.dessalines.thumbkey.ui.components.keyboard
+
 import android.content.Context
 import android.media.AudioManager
 import android.os.Build
 import android.view.HapticFeedbackConstants
 import android.view.KeyEvent
+import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.core.tween
@@ -14,6 +16,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
@@ -284,7 +287,52 @@ fun KeyboardKey(
             )
             // The key1 is necessary, otherwise new swipes wont work
             .pointerInput(key1 = id) {
-                detectDragGestures(
+                val cAction = key.center.action
+                if (cAction is KeyAction.ChordDown) {
+                    detectTapGestures(onPress = {
+                        // TODO: last action stuf idk
+                        performKeyAction(
+                            action = cAction,
+                            ime = ime,
+                            autoCapitalize = autoCapitalize,
+                            keyboardSettings = keyboardSettings,
+                            onToggleShiftMode = onToggleShiftMode,
+                            onToggleCtrlMode = onToggleCtrlMode,
+                            onToggleAltMode = onToggleAltMode,
+                            onToggleNumericMode = onToggleNumericMode,
+                            onToggleEmojiMode = onToggleEmojiMode,
+                            onToggleClipboardMode = onToggleClipboardMode,
+                            onToggleCapsLock = onToggleCapsLock,
+                            onToggleHideLetters = onToggleHideLetters,
+                            onAutoCapitalize = onAutoCapitalize,
+                            onSwitchLanguage = onSwitchLanguage,
+                            onChangePosition = onChangePosition,
+                            onKeyEvent = onKeyEvent,
+                        )
+                        tryAwaitRelease()
+                        val action = KeyAction.ChordUp(cAction.key)
+                        performKeyAction(
+                            action = action,
+                            ime = ime,
+                            autoCapitalize = autoCapitalize,
+                            keyboardSettings = keyboardSettings,
+                            onToggleShiftMode = onToggleShiftMode,
+                            onToggleCtrlMode = onToggleCtrlMode,
+                            onToggleAltMode = onToggleAltMode,
+                            onToggleNumericMode = onToggleNumericMode,
+                            onToggleEmojiMode = onToggleEmojiMode,
+                            onToggleClipboardMode = onToggleClipboardMode,
+                            onToggleCapsLock = onToggleCapsLock,
+                            onToggleHideLetters = onToggleHideLetters,
+                            onAutoCapitalize = onAutoCapitalize,
+                            onSwitchLanguage = onSwitchLanguage,
+                            onChangePosition = onChangePosition,
+                            onKeyEvent = onKeyEvent,
+                        )
+                    })
+                }
+                else {
+                    detectDragGestures(
                     onDragStart = {
                         isDragged.value = true
                     },
@@ -654,6 +702,7 @@ fun KeyboardKey(
                         selection = Selection()
                     },
                 )
+                }
             }
 
     // a 3x3 grid

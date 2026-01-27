@@ -207,6 +207,7 @@ import com.dessalines.thumbkey.keyboards.KB_UK_MESSAGEASE_SYMBOLS
 import com.dessalines.thumbkey.keyboards.KB_UK_RU_MESSAGEASE_SYMBOLS
 import com.dessalines.thumbkey.keyboards.KB_UK_THUMBKEY
 import com.dessalines.thumbkey.keyboards.KB_VN_THUMBKEY
+import com.dessalines.thumbkey.keyboards.KB_EN_CHORD
 
 // Make sure new keyboards are added AT THE END of this list, and have a higher index.
 // DO NOT put them in the middle of the list!
@@ -452,4 +453,5 @@ enum class KeyboardLayout(
         KB_FR_EN_FRAPPE_FLUIDE_V1_LEFT_HANDED_CONTROL_LEFT_SIDE,
     ), // français frappefluide (fr+en) v1 (gauchère, outils à gauche),
     HUHungram(KB_HU_HUNGRAM), // magyar hungram
+    ENChord(KB_EN_CHORD),
 }

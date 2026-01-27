@@ -21,6 +21,7 @@ import com.dessalines.thumbkey.utils.KeyboardLayout
 import com.dessalines.thumbkey.utils.TAG
 import com.dessalines.thumbkey.utils.ThumbKeyClipboardManager
 import com.dessalines.thumbkey.utils.toBool
+import com.dessalines.thumbkey.utils.ChordManager
 
 class IMEService :
     InputMethodService(),
@@ -154,4 +155,6 @@ class IMEService :
     private val savedStateRegistryController = SavedStateRegistryController.create(this)
     override val savedStateRegistry: SavedStateRegistry =
         savedStateRegistryController.savedStateRegistry
+
+    var chordManager: ChordManager = ChordManager()
 }
