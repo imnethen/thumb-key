@@ -18,11 +18,37 @@ val KB_EN_CHORD_MAIN =
         listOf(
             listOf(
                 KeyItemC(
-                    center = KeyC(0, size=LARGE)
+                    center = KeyC(7, "i", size=LARGE)
                 ),
                 KeyItemC(
-                    center = KeyC(1, size=LARGE)
-                )
+                    center = KeyC(6, "n", size=LARGE)
+                ),
+                KeyItemC(
+                    center = KeyC(5, "s", size=LARGE)
+                ),
+                KeyItemC(
+                    center = KeyC(4, "r", size=LARGE)
+                ),
+            ),
+            listOf(
+                KeyItemC(
+                    center = KeyC(3, "e", size=LARGE)
+                ),
+                KeyItemC(
+                    center = KeyC(2, "t", size=LARGE)
+                ),
+                KeyItemC(
+                    center = KeyC(1, "o", size=LARGE)
+                ),
+                KeyItemC(
+                    center = KeyC(0, "a", size=LARGE)
+                ),
+            ),
+            listOf(
+                EMOJI_KEY_ITEM,
+                SPACEBAR_SKINNY_KEY_ITEM,
+                BACKSPACE_KEY_ITEM,
+                RETURN_KEY_ITEM,
             )
         )
     )
@@ -135,11 +161,37 @@ val KB_EN_CHORD_SHIFTED =
         listOf(
             listOf(
                 KeyItemC(
-                    center = KeyC(0, size=LARGE)
+                    center = KeyC(0, "i", size=LARGE)
                 ),
                 KeyItemC(
-                    center = KeyC(1, size=LARGE)
-                )
+                    center = KeyC(1, "n", size=LARGE)
+                ),
+                KeyItemC(
+                    center = KeyC(2, "s", size=LARGE)
+                ),
+                KeyItemC(
+                    center = KeyC(3, "r", size=LARGE)
+                ),
+            ),
+            listOf(
+                KeyItemC(
+                    center = KeyC(4, "e", size=LARGE)
+                ),
+                KeyItemC(
+                    center = KeyC(5, "t", size=LARGE)
+                ),
+                KeyItemC(
+                    center = KeyC(6, "o", size=LARGE)
+                ),
+                KeyItemC(
+                    center = KeyC(7, "a", size=LARGE)
+                ),
+            ),
+            listOf(
+                EMOJI_KEY_ITEM,
+                SPACEBAR_SKINNY_KEY_ITEM,
+                BACKSPACE_KEY_ITEM,
+                RETURN_KEY_ITEM,
             )
         )
     )
