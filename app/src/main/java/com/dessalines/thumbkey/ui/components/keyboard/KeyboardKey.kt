@@ -290,7 +290,7 @@ fun KeyboardKey(
                 val cAction = key.center.action
                 if (cAction is KeyAction.ChordDown) {
                     detectTapGestures(onPress = {
-                        // TODO: last action stuf idk
+                        // TODO: tap count stufs
                         performKeyAction(
                             action = cAction,
                             ime = ime,
@@ -309,7 +309,11 @@ fun KeyboardKey(
                             onChangePosition = onChangePosition,
                             onKeyEvent = onKeyEvent,
                         )
+                        doneKeyAction(scope, cAction, isDragged, releasedKey, animationHelperSpeed)
+                        lastAction.value = Pair(cAction, TimeSource.Monotonic.markNow())
+
                         tryAwaitRelease()
+
                         val action = KeyAction.ChordUp(cAction.key)
                         performKeyAction(
                             action = action,
@@ -329,6 +333,11 @@ fun KeyboardKey(
                             onChangePosition = onChangePosition,
                             onKeyEvent = onKeyEvent,
                         )
+                        doneKeyAction(scope, action, isDragged, releasedKey, animationHelperSpeed)
+                        // hack to make animations exist
+                        // TODO: make the animations work properly
+                        doneKeyAction(scope, KeyAction.CommitText(""), isDragged, releasedKey, animationHelperSpeed)
+                        lastAction.value = Pair(action, TimeSource.Monotonic.markNow())
                     })
                 }
                 else {
