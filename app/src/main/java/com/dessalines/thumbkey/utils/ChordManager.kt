@@ -49,14 +49,14 @@ class ChordManager {
         0b0010_0001 to "x",
 
         0b10_1000_0000 to "@",
-        0b10_0100_0000 to ".",
+        0b10_0100_0000 to "!",
         0b10_0010_0000 to "?",
         0b10_0001_0000 to "\"",
 
         0b10_0000_1000 to ":",
         0b10_0000_0100 to ",",
         0b10_0000_0010 to "'",
-        0b10_0000_0001 to "!",
+        0b10_0000_0001 to ".",
     )
 
     private val dictShifted = mapOf(
@@ -102,18 +102,18 @@ class ChordManager {
         0b1_0010_0001 to "X",
 
         0b11_1000_0000 to "@",
-        0b11_0100_0000 to ".",
+        0b11_0100_0000 to "!",
         0b11_0010_0000 to "?",
         0b11_0001_0000 to "\"",
 
         0b11_0000_1000 to ":",
         0b11_0000_0100 to ",",
         0b11_0000_0010 to "'",
-        0b11_0000_0001 to "!",
+        0b11_0000_0001 to ".",
     )
 
     private val dict = dictAlpha + dictShifted
-    
+
     fun keyDown(keyMask: Int) {
         state = state or keyMask
         curChord = curChord or keyMask
@@ -135,5 +135,10 @@ class ChordManager {
         val res = dict[curChord]
         curChord = 0
         return res
+    }
+
+    fun resetState() {
+        state = 0
+        curChord = 0
     }
 }

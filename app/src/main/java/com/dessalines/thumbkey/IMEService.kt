@@ -140,6 +140,7 @@ class IMEService :
 
     override fun onWindowHidden() {
         currentKeyboardDefinition?.settings?.textProcessor?.handleFinishInput(this)
+        chordManager.resetState()
         super.onWindowHidden()
     }
 
