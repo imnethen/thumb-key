@@ -52,26 +52,27 @@ val KB_EN_TEAPOT_SWIPESPACE_MAIN =
                 KeyItemC(
                     swipeType = FOUR_WAY_CROSS,
                     backgroundColor = SURFACE_VARIANT,
-                    // TODO: implement these as modified existing keyCs instead of making them from scratch
                     center = KeyC(
                         display = KeyDisplay.IconDisplay(Icons.Outlined.ArrowDropUp),
                         action = ToggleShiftMode(true),
                         color = SECONDARY,
                         size = LARGE,
                     ),
-                    top = KeyC(
+                    bottom = KeyC("\n", "\\n", size = SMALL, color = MUTED),
+                    right = KeyC(
                         display = KeyDisplay.IconDisplay(Icons.AutoMirrored.Outlined.KeyboardReturn),
                         action = IMECompleteAction,
                         size = SMALL,
                         color = MUTED,
                     ),
+                    top = TOGGLE_CAPS_KEYC,
                     left = KeyC(
                         display = KeyDisplay.IconDisplay(Icons.Outlined.Numbers),
                         action = ToggleNumericMode(true),
                         size = SMALL,
                         color = MUTED,
-                    )
-                )
+                    ),
+                ),
             )
         )
     )
@@ -114,30 +115,26 @@ val KB_EN_TEAPOT_SWIPESPACE_SHIFTED =
                     swipeType = FOUR_WAY_CROSS,
                     backgroundColor = SURFACE_VARIANT,
                     center = KeyC(
-                        display = KeyDisplay.IconDisplay(Icons.Outlined.KeyboardCapslock),
-                        capsModeDisplay = KeyDisplay.IconDisplay(Icons.Outlined.Copyright),
-                        action = ToggleCapsLock,
+                        display = KeyDisplay.IconDisplay(Icons.Outlined.ArrowDropUp),
+                        action = ToggleShiftMode(true),
                         color = SECONDARY,
                         size = LARGE,
                     ),
-                    top = KeyC(
+                    bottom = KeyC("\n", "\\n", size = SMALL, color = MUTED),
+                    right = KeyC(
                         display = KeyDisplay.IconDisplay(Icons.AutoMirrored.Outlined.KeyboardReturn),
                         action = IMECompleteAction,
                         size = SMALL,
-                        color = SECONDARY,
+                        color = MUTED,
                     ),
+                    top = TOGGLE_CAPS_KEYC,
                     left = KeyC(
                         display = KeyDisplay.IconDisplay(Icons.Outlined.Numbers),
                         action = ToggleNumericMode(true),
                         size = SMALL,
-                        color = SECONDARY,
-                    ),
-                    bottom = KeyC(
-                        display = KeyDisplay.IconDisplay(Icons.Outlined.ArrowDropDown),
-                        action = ToggleShiftMode(false),
                         color = MUTED,
-                    )
-                )
+                    ),
+                ),
             )
         )
     )
