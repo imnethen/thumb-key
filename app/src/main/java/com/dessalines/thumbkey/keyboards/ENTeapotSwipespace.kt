@@ -58,7 +58,7 @@ val KB_EN_TEAPOT_SWIPESPACE_MAIN =
                         color = SECONDARY,
                         size = LARGE,
                     ),
-                    bottom = KeyC("\n", "\\n", size = SMALL, color = MUTED),
+                    bottom = KeyC("\n", "newline", size = SMALL, color = MUTED),
                     right = KeyC(
                         display = KeyDisplay.IconDisplay(Icons.AutoMirrored.Outlined.KeyboardReturn),
                         action = IMECompleteAction,
@@ -115,8 +115,8 @@ val KB_EN_TEAPOT_SWIPESPACE_SHIFTED =
                     swipeType = FOUR_WAY_CROSS,
                     backgroundColor = SURFACE_VARIANT,
                     center = KeyC(
-                        display = KeyDisplay.IconDisplay(Icons.Outlined.ArrowDropUp),
-                        action = ToggleShiftMode(true),
+                        display = KeyDisplay.IconDisplay(Icons.Outlined.ArrowDropDown),
+                        action = ToggleShiftMode(false),
                         color = SECONDARY,
                         size = LARGE,
                     ),

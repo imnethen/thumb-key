@@ -20,30 +20,30 @@ val KB_EN_TEAPOT_MAIN =
         listOf(
             listOf(
                 KeyItemC(
-                    center = KeyC(1 shl 7, "r", size=LARGE)
+                    center = KeyC(1 shl 7, "r", size=LARGE),
                 ),
                 KeyItemC(
-                    center = KeyC(1 shl 6, "t", size=LARGE)
+                    center = KeyC(1 shl 6, "t", size=LARGE),
                 ),
                 KeyItemC(
-                    center = KeyC(1 shl 5, "e", size=LARGE)
+                    center = KeyC(1 shl 5, "e", size=LARGE),
                 ),
                 KeyItemC(
-                    center = KeyC(1 shl 4, "a", size=LARGE)
+                    center = KeyC(1 shl 4, "a", size=LARGE),
                 ),
             ),
             listOf(
                 KeyItemC(
-                    center = KeyC(1 shl 3, "n", size=LARGE)
+                    center = KeyC(1 shl 3, "n", size=LARGE),
                 ),
                 KeyItemC(
-                    center = KeyC(1 shl 2, "o", size=LARGE)
+                    center = KeyC(1 shl 2, "o", size=LARGE),
                 ),
                 KeyItemC(
-                    center = KeyC(1 shl 1, "s", size=LARGE)
+                    center = KeyC(1 shl 1, "s", size=LARGE),
                 ),
                 KeyItemC(
-                    center = KeyC(1 shl 0, "i", size=LARGE)
+                    center = KeyC(1 shl 0, "i", size=LARGE),
                 ),
             ),
             listOf(

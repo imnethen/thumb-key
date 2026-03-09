@@ -78,6 +78,8 @@ import com.dessalines.thumbkey.utils.slideCursorDistance
 import com.dessalines.thumbkey.utils.startSelection
 import com.dessalines.thumbkey.utils.swipeDirection
 import com.dessalines.thumbkey.utils.toPx
+import com.dessalines.thumbkey.utils.toInt
+import com.dessalines.thumbkey.utils.toBool
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -153,7 +155,11 @@ fun KeyboardKey(
     val isPasswordField by remember { mutableStateOf(isPasswordField(ime)) }
 
     val interactionSource = remember { MutableInteractionSource() }
-    val isPressed by interactionSource.collectIsPressedAsState()
+    val isPressed = remember { mutableStateOf(false) }
+    // TODO
+    if (!(key.center.action is KeyAction.ChordDown) || true) {
+        isPressed.value = interactionSource.collectIsPressedAsState().value
+    }
 
     val isDragged = remember { mutableStateOf(false) }
     val releasedKey = remember { mutableStateOf<String?>(null) }
@@ -176,7 +182,7 @@ fun KeyboardKey(
     var selection by remember { mutableStateOf(Selection()) }
 
     val backgroundColor =
-        if (!(isDragged.value || isPressed)) {
+        if (!(isDragged.value || isPressed.value)) {
             colorVariantToColor(colorVariant = key.backgroundColor)
         } else {
             MaterialTheme.colorScheme.inversePrimary
@@ -188,7 +194,7 @@ fun KeyboardKey(
     val audioManager = ctx.getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
     LaunchedEffect(key1 = isPressed) {
-        if (isPressed) {
+        if (isPressed.value) {
             if (vibrateOnTap) {
                 // This is a workaround for only having LongPress
                 // https://stackoverflow.com/questions/68333741/how-to-perform-a-haptic-feedback-in-jetpack-compose
@@ -290,7 +296,7 @@ fun KeyboardKey(
                 val cAction = key.center.action
                 if (cAction is KeyAction.ChordDown) {
                     detectTapGestures(onPress = {
-                        // TODO: tap count stufs
+                        // TODO: tap count stufs ?
                         performKeyAction(
                             action = cAction,
                             ime = ime,
@@ -309,6 +315,8 @@ fun KeyboardKey(
                             onChangePosition = onChangePosition,
                             onKeyEvent = onKeyEvent,
                         )
+
+                        // isPressed.value = true
                         doneKeyAction(scope, cAction, isDragged, releasedKey, animationHelperSpeed)
                         lastAction.value = Pair(cAction, TimeSource.Monotonic.markNow())
 
@@ -333,11 +341,14 @@ fun KeyboardKey(
                             onChangePosition = onChangePosition,
                             onKeyEvent = onKeyEvent,
                         )
+
                         doneKeyAction(scope, action, isDragged, releasedKey, animationHelperSpeed)
                         // hack to make animations exist
                         // TODO: make the animations work properly
+                        // update they kinda work i think yay
                         doneKeyAction(scope, KeyAction.CommitText(""), isDragged, releasedKey, animationHelperSpeed)
                         lastAction.value = Pair(action, TimeSource.Monotonic.markNow())
+                        // isPressed.value = false
                     })
                 }
                 else {
