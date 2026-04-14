@@ -209,6 +209,7 @@ import com.dessalines.thumbkey.keyboards.KB_UK_THUMBKEY
 import com.dessalines.thumbkey.keyboards.KB_VN_THUMBKEY
 import com.dessalines.thumbkey.keyboards.KB_EN_TEAPOT
 import com.dessalines.thumbkey.keyboards.KB_EN_TEAPOT_SWIPESPACE
+import com.dessalines.thumbkey.keyboards.KB_EN_TEAPOT_SWIPESPACE_MIRROR
 
 // Make sure new keyboards are added AT THE END of this list, and have a higher index.
 // DO NOT put them in the middle of the list!
@@ -456,4 +457,5 @@ enum class KeyboardLayout(
     HUHungram(KB_HU_HUNGRAM), // magyar hungram
     ENTeapot(KB_EN_TEAPOT),
     ENTeapotSwipespace(KB_EN_TEAPOT_SWIPESPACE),
+    ENTeapotSwipespaceMirror(KB_EN_TEAPOT_SWIPESPACE_MIRROR)
 }

@@ -67,6 +67,10 @@ class ComposeKeyboardView(
                                         ?.textProcessor
                                         ?.updateCursorPosition(ctx)
 
+                                    if (ctx.currentKeyboardDefinition?.chordDicts != null) {
+                                        ctx.chordManager.setDict(ctx.currentKeyboardDefinition?.chordDicts!!)
+                                    }
+
                                     // Display the new layout's name on the screen
                                     if (s.showToastOnLayoutSwitch.toBool()) {
                                         val layoutName = layout.keyboardDefinition.title

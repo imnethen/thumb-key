@@ -71,6 +71,7 @@ android {
                 // Includes a local, custom Proguard rules file
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
         }
         debug {
             applicationIdSuffix = ".debug"

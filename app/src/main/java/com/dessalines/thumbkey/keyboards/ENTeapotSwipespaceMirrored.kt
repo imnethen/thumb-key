@@ -4,50 +4,54 @@ package com.dessalines.thumbkey.keyboards
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.KeyboardReturn
-import androidx.compose.material.icons.outlined.*
+import androidx.compose.material.icons.outlined.Abc
+import androidx.compose.material.icons.outlined.ArrowDropDown
+import androidx.compose.material.icons.outlined.ArrowDropUp
+import androidx.compose.material.icons.outlined.ContentCopy
+import androidx.compose.material.icons.outlined.ContentPaste
+import androidx.compose.material.icons.outlined.Copyright
+import androidx.compose.material.icons.outlined.KeyboardCapslock
+import androidx.compose.material.icons.outlined.Language
+import androidx.compose.material.icons.outlined.Numbers
 import com.dessalines.thumbkey.utils.*
 import com.dessalines.thumbkey.utils.ColorVariant.*
 import com.dessalines.thumbkey.utils.FontSizeVariant.*
 import com.dessalines.thumbkey.utils.KeyAction.*
 import com.dessalines.thumbkey.utils.SwipeNWay.*
 
-val KB_EN_TEAPOT_MAIN =
+val KB_EN_TEAPOT_SWIPESPACE_MIRROR_MAIN =
     KeyboardC(
         listOf(
             listOf(
                 KeyItemC(
-                    center = KeyC(1 shl 7, "r", size=LARGE),
+                    center = KeyC(1 shl 7, "r", size=LARGE)
                 ),
                 KeyItemC(
-                    center = KeyC(1 shl 6, "t", size=LARGE),
+                    center = KeyC(1 shl 6, "t", size=LARGE)
                 ),
                 KeyItemC(
-                    center = KeyC(1 shl 5, "e", size=LARGE),
+                    center = KeyC(1 shl 5, "e", size=LARGE)
                 ),
                 KeyItemC(
-                    center = KeyC(1 shl 4, "a", size=LARGE),
+                    center = KeyC(1 shl 4, "a", size=LARGE)
                 ),
-            ),
+            ).reversed(),
             listOf(
                 KeyItemC(
-                    center = KeyC(1 shl 3, "n", size=LARGE),
+                    center = KeyC(1 shl 3, "n", size=LARGE)
                 ),
                 KeyItemC(
-                    center = KeyC(1 shl 2, "o", size=LARGE),
+                    center = KeyC(1 shl 2, "o", size=LARGE)
                 ),
                 KeyItemC(
-                    center = KeyC(1 shl 1, "s", size=LARGE),
+                    center = KeyC(1 shl 1, "s", size=LARGE)
                 ),
                 KeyItemC(
-                    center = KeyC(1 shl 0, "i", size=LARGE),
+                    center = KeyC(1 shl 0, "i", size=LARGE)
                 ),
-            ),
+            ).reversed(),
             listOf(
-                KeyItemC(
-                    center = KeyC(1 shl 9),
-                    widthMultiplier = 2,
-                    backgroundColor = SURFACE_VARIANT
-                ),
+                SPACEBAR_DOUBLE_KEY_ITEM,
                 BACKSPACE_KEY_ITEM,
                 KeyItemC(
                     swipeType = FOUR_WAY_CROSS,
@@ -73,11 +77,11 @@ val KB_EN_TEAPOT_MAIN =
                         color = MUTED,
                     ),
                 ),
-            )
+            ).reversed()
         )
     )
 
-val KB_EN_TEAPOT_SHIFTED =
+val KB_EN_TEAPOT_SWIPESPACE_MIRROR_SHIFTED =
     KeyboardC(
         listOf(
             listOf(
@@ -93,7 +97,7 @@ val KB_EN_TEAPOT_SHIFTED =
                 KeyItemC(
                     center = KeyC((1 shl 8) or (1 shl 4), "A", size=LARGE)
                 ),
-            ),
+            ).reversed(),
             listOf(
                 KeyItemC(
                     center = KeyC((1 shl 8) or (1 shl 3), "N", size=LARGE)
@@ -107,13 +111,9 @@ val KB_EN_TEAPOT_SHIFTED =
                 KeyItemC(
                     center = KeyC((1 shl 8) or (1 shl 0), "I", size=LARGE)
                 ),
-            ),
+            ).reversed(),
             listOf(
-                KeyItemC(
-                    center = KeyC(1 shl 9),
-                    widthMultiplier = 2,
-                    backgroundColor = SURFACE_VARIANT
-                ),
+                SPACEBAR_DOUBLE_KEY_ITEM,
                 BACKSPACE_KEY_ITEM,
                 KeyItemC(
                     swipeType = FOUR_WAY_CROSS,
@@ -139,11 +139,11 @@ val KB_EN_TEAPOT_SHIFTED =
                         color = MUTED,
                     ),
                 ),
-            )
+            ).reversed()
         )
     )
 
-val KB_EN_TEAPOT_NUMERIC =
+val KB_EN_TEAPOT_SWIPESPACE_MIRROR_NUMERIC =
     KeyboardC(
         listOf(
             listOf(
@@ -159,7 +159,7 @@ val KB_EN_TEAPOT_NUMERIC =
                 KeyItemC(
                     center = KeyC((1 shl 10) or (1 shl 4), "(", size=LARGE),
                 ),
-            ),
+            ).reversed(),
             listOf(
                 KeyItemC(
                     center = KeyC((1 shl 10) or (1 shl 3), "3", size=LARGE),
@@ -173,7 +173,7 @@ val KB_EN_TEAPOT_NUMERIC =
                 KeyItemC(
                     center = KeyC((1 shl 10) or (1 shl 0), ")", size=LARGE),
                 ),
-            ),
+            ).reversed(),
             listOf(
                 SPACEBAR_DOUBLE_KEY_ITEM,
                 BACKSPACE_KEY_ITEM,
@@ -206,13 +206,11 @@ val KB_EN_TEAPOT_NUMERIC =
                         color = MUTED,
                     ),
                 ),
-            )
+            ).reversed()
         )
     )
 
 private val dictAlpha = mapOf(
-    0b10_0000_0000 to " ",
-
     0b1000_0000 to "r",
     0b0100_0000 to "t",
     0b0010_0000 to "e",
@@ -251,21 +249,9 @@ private val dictAlpha = mapOf(
     0b1000_0100 to "z",
     0b0100_0010 to "q",
     0b0010_0001 to "x",
-
-    0b10_1000_0000 to "@",
-    0b10_0100_0000 to "!",
-    0b10_0010_0000 to "?",
-    0b10_0001_0000 to "\"",
-
-    0b10_0000_1000 to ":",
-    0b10_0000_0100 to ",",
-    0b10_0000_0010 to "'",
-    0b10_0000_0001 to ".",
 )
 
 private val dictShifted = mapOf(
-    0b11_0000_0000 to " ",
-
     0b1_1000_0000 to "R",
     0b1_0100_0000 to "T",
     0b1_0010_0000 to "E",
@@ -304,16 +290,6 @@ private val dictShifted = mapOf(
     0b1_1000_0100 to "Z",
     0b1_0100_0010 to "Q",
     0b1_0010_0001 to "X",
-
-    0b11_1000_0000 to "@",
-    0b11_0100_0000 to "!",
-    0b11_0010_0000 to "?",
-    0b11_0001_0000 to "\"",
-
-    0b11_0000_1000 to ":",
-    0b11_0000_0100 to ",",
-    0b11_0000_0010 to "'",
-    0b11_0000_0001 to ".",
 )
 
 private val dictNumeric = mapOf(
@@ -343,7 +319,7 @@ private val dictNumeric = mapOf(
     0b100_0010_1000 to "<",
     0b100_0001_0100 to ">",
 
-    0b100_0100_1000 to "/",
+    0b100_0100_1000 to "\\",
     0b100_0010_0100 to "%",
     0b100_0001_0010 to "`",
 
@@ -352,7 +328,7 @@ private val dictNumeric = mapOf(
     0b100_0010_0010 to "}",
     0b100_0001_0001 to ";",
 
-    0b100_1000_0100 to "\\",
+    0b100_1000_0100 to "/",
     0b100_0100_0010 to "[",
     0b100_0010_0001 to "]",
 
@@ -363,14 +339,14 @@ private val dictNumeric = mapOf(
     0b100_1000_0001 to "$",
 )
 
-val KB_EN_TEAPOT: KeyboardDefinition =
+val KB_EN_TEAPOT_SWIPESPACE_MIRROR: KeyboardDefinition =
     KeyboardDefinition(
-        title = "english teapot",
+        title = "english teapot swipespace mirrored",
         modes =
             KeyboardDefinitionModes(
-                main = KB_EN_TEAPOT_MAIN,
-                shifted = KB_EN_TEAPOT_SHIFTED,
-                numeric = KB_EN_TEAPOT_NUMERIC,
+                main = KB_EN_TEAPOT_SWIPESPACE_MIRROR_MAIN,
+                shifted = KB_EN_TEAPOT_SWIPESPACE_MIRROR_SHIFTED,
+                numeric = KB_EN_TEAPOT_SWIPESPACE_MIRROR_NUMERIC,
             ),
         settings =
             KeyboardDefinitionSettings(
@@ -380,6 +356,6 @@ val KB_EN_TEAPOT: KeyboardDefinition =
             KeyboardDefinitionChordDicts(
                 alpha = dictAlpha,
                 shifted = dictShifted,
-                numeric = dictNumeric,
+                numeric = dictNumeric
             ),
     )

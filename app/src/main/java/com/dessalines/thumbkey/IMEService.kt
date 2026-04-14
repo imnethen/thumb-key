@@ -15,6 +15,7 @@ import androidx.savedstate.SavedStateRegistry
 import androidx.savedstate.SavedStateRegistryController
 import androidx.savedstate.SavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
+import arrow.core.some
 import com.dessalines.thumbkey.db.DEFAULT_DISABLE_FULLSCREEN_EDITOR
 import com.dessalines.thumbkey.utils.KeyboardDefinition
 import com.dessalines.thumbkey.utils.KeyboardLayout
@@ -36,6 +37,9 @@ class IMEService :
         val layoutIndex = settingsRepo.appSettings.value?.keyboardLayout
         if (layoutIndex != null) {
             currentKeyboardDefinition = KeyboardLayout.entries[layoutIndex].keyboardDefinition
+        }
+        if (currentKeyboardDefinition != null && currentKeyboardDefinition?.chordDicts != null) {
+            chordManager.setDict(currentKeyboardDefinition?.chordDicts!!)
         }
 
         val view = ComposeKeyboardView(this, settingsRepo, clipboardRepo)
@@ -66,6 +70,7 @@ class IMEService :
         super.onStartInput(attribute, restarting)
         val view = this.setupView()
         this.setInputView(view)
+        chordManager.resetState()
     }
 
     // Lifecycle Methods

@@ -40,10 +40,20 @@ data class KeyboardDefinitionSettings(
 }
 
 @optics
+data class KeyboardDefinitionChordDicts(
+    val alpha: Map<Int, String> = mapOf(),
+    val shifted: Map<Int, String> = mapOf(),
+    val numeric: Map<Int, String> = mapOf(),
+) {
+    companion object
+}
+
+@optics
 data class KeyboardDefinition(
     val title: String,
     val modes: KeyboardDefinitionModes,
     val settings: KeyboardDefinitionSettings = KeyboardDefinitionSettings(),
+    val chordDicts: KeyboardDefinitionChordDicts? = null,
 ) {
     companion object
 }
