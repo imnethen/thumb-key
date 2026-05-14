@@ -13,6 +13,7 @@ class ChordManager {
     }
 
     fun keyDown(keyMask: Int) {
+        Log.i("state", state.toString())
         state = state or keyMask
         curChord = curChord or keyMask
     }

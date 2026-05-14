@@ -19,7 +19,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.dessalines.thumbkey"
+        applicationId = "com.yuli.teapot"
         minSdk = 24
         targetSdk = 36
         versionCode = 170
